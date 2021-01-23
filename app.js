@@ -20,14 +20,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // 1. HTML Routes-------
-// 1a. GET `/notes` - Should return the `notes.html` file.
 
-// 1b. GET `*` - Should return the `index.html` file
-// Basic route that sends the user first to the AJAX Page
+
+// 1a. GET `/notes` - Should return the `notes.html` file. (Basic route that sends the user first to the AJAX Page...?)
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "notes.html"));
 });
 
+// 1b. GET `*` - Should return the `index.html` file
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
