@@ -1,15 +1,13 @@
 // Sets up Inquirer
 const inquirer = require("inquirer");
-const path = require("path");
+// const path = require("path");
 const fs = require("fs");
 const util = require("util");
 
-// const DB_DIR = path.resolve(__dirname, "db");
-// const dbPath = path.join(DB_DIR, "db.json");
-
-// Dependencies
+// Express Dependencies
 var express = require("express");
 var path = require("path");
+// path: ^ used for both Inquirer.js and Express.js
 
 // Sets up the Express App
 var app = express();
@@ -22,14 +20,16 @@ app.use(express.json());
 // 1. HTML Routes-------
 
 
-// 1a. GET `/notes` - Should return the `notes.html` file. (Basic route that sends the user first to the AJAX Page...?)
+// 1a. GET `/notes` - Should return the `notes.html` file. (Basic route that sends the user first to the AJAX Page)
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "notes.html"));
+    console.log("Retrieved notes.html file.")
 });
 
 // 1b. GET `*` - Should return the `index.html` file
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
+    console.log("Retrieved index.html file.")
 });
 
 
@@ -63,5 +63,5 @@ app.post("/api/notes", function (req, res) {
 
 // Starts the server to begin listening
 app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+    console.log(`App listening on PORT ${PORT}`);
 });
