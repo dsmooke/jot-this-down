@@ -1,21 +1,24 @@
 // Sets up Inquirer
 const inquirer = require("inquirer");
-// const path = require("path");
 const fs = require("fs");
 const util = require("util");
 
 // Express Dependencies
-var express = require("express");
-var path = require("path");
-// path: ^ used for both Inquirer.js and Express.js
+const express = require("express");
+const path = require("path");// path: ^ used for both Inquirer.js and Express.js
+
 
 // Sets up the Express App
-var app = express();
-var PORT = 3000;
+const app = express();
+
+// Set 'public' as static folder
+app.use(express.static(path.join(__dirname, "public")));
+
+const PORT = 3000;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 // 1. HTML Routes-------
 
@@ -23,41 +26,43 @@ app.use(express.json());
 // 1a. GET `/notes` - Should return the `notes.html` file. 
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "public", "notes.html"));
-    console.log("Retrieved notes.html file from public folder.")
+    // console.log("Retrieved notes.html file from public folder.")
 });
 
 // 1b. GET `*` - Should return the `index.html` file
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "public", "index.html"));
-    console.log("Retrieved index.html file from public folder.")
+    // console.log("Retrieved index.html file from public folder.")
 });
+
 
 
 // 3. API Routes------
 
-// 3a. GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+// 3a. GET `/api/notes` - Should read the `db.json` file (will contain all created notes) and return all saved notes as JSON. (Rest API)
 
 app.get("/api/notes", function (req, res) {
-    return res.json("db.json");
+    return res.json("db.json"); //rename db.json to savedNotes.json? and module.exports = savedNotes ?
 });
 
 // 3b. POST `/api/notes` - should receive a new note to save on the request body,  add it to the `db.json` file, and then return the new note to the client--takes in JSON input
 
-app.post("/api/notes", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newNote = req.body;
+// app.post("/api/notes", function (req, res) {
 
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
+// req.body hosts is equal to the JSON post sent from the user
+// This works because of our body parsing middleware
+// var newNote = req.body;
 
-    console.log(newNote);
+// Using a RegEx Pattern to remove spaces from newCharacter
+// You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+// newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
 
-    notes.push(newNote);
+// console.log(newNote);
 
-    res.json(newNote);
-});
+// notes.push(newNote);
+
+// res.json(newNote);
+// });
 
 // 3c. DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
