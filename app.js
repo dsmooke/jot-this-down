@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = 3000;
 
+// access array of saved notes - should be accessed by id
+const savedNotes = require("./db/savedNotes");
+
 // Middleware: logger to return accessed url
 const logger = function (req, res, next) {
     console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
@@ -46,7 +49,9 @@ app.get("*", function (req, res) {
 // 3a. GET `/api/notes` - Should read the `db.json` file (will contain all created notes) and return all saved notes as JSON. (Rest API)
 
 app.get("/api/notes", function (req, res) {
+    return res.json(savedNotes); //rename db.json to savedNotes.json? and module.exports = savedNotes ?
 });
+
 
 // 3b. POST `/api/notes` - should receive a new note to save on the request body,  add it to the `db.json` file, and then return the new note to the client--takes in JSON input
 
