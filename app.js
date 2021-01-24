@@ -16,6 +16,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = 3000;
 
+// Middleware: logger to return accessed url
+const logger = function (req, res, next) {
+    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
+    next();
+};
+
+// Init middleware
+app.use(logger);
+
 // Sets up the Express app to handle data parsing
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
