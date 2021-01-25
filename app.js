@@ -4,7 +4,7 @@ const util = require("util");
 
 const express = require("express");
 const path = require("path");
-const notes = require("./Notes");
+// const notes = require("./Notes");
 const logger = require("./middleware/logger");
 const app = express();
 
@@ -13,6 +13,9 @@ const app = express();
 
 // Set 'public' as static folder
 app.use(express.static(path.join(__dirname, "public")));
+
+// API Routes
+app.use("/api/notes", require("./routes/api/notes"));
 
 const PORT = 3000;
 
