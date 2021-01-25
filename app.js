@@ -22,24 +22,11 @@ const logger = function (req, res, next) {
 // Init middleware
 app.use(logger);
 
+// API Routes
 
-// HTML Routes-------
-
-// GET `/notes` - Should return the `notes.html` file. 
-app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "public", "notes.html"));
-    // console.log("Retrieved notes.html file from public folder.")
-});
-
-// GET `*` - Should return the `index.html` file
-app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
-    // console.log("Retrieved index.html file from public folder.")
-});
-
-// GETs all created notes, returns all saved notes as JSON. (Rest API)
+// GETs all created notes, returns as JSON. (Rest API)
 app.get("/api/notes", function (req, res) {
-    return res.json(savedNotes); //rename db.json to savedNotes.json? and module.exports = savedNotes ?
+    return res.json(notes); //rename db.json to savedNotes.json? and module.exports = savedNotes ?
 });
 
 // POST `/api/notes` - should receive a new note to save on the request body,  add it to the `db.json` file, and then return the new note to the client--takes in JSON input
