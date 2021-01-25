@@ -9,7 +9,7 @@ const logger = require("./middleware/logger");
 const app = express();
 
 // Init middleware
-app.use(logger);
+// app.use(logger);
 
 // Set 'public' as static folder
 app.use(express.static(path.join(__dirname, "public")));
@@ -23,9 +23,14 @@ const PORT = 3000;
 
 // API Routes
 
-// Gets all created notes, returns as JSON. (Rest API)
+// Gets All Created Notes, returns as JSON. (Rest API)
 app.get("/api/notes", function (req, res) {
     return res.json(notes);
+});
+
+// Gets Single Note
+app.get("/api/notes/:id", function (req, res) {
+    res.json(notes.filter(note => note.id === parseInt(req.params.id)))
 });
 
 // Starts the server to begin listening
