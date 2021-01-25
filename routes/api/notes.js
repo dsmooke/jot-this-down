@@ -43,24 +43,36 @@ router.post("/", function (req, res) {
 
 });
 
-// Update Notes
-router.put("/:id", function (req, res) {
+// // Update Notes
+// router.put("/:id", function (req, res) {
+
+//     // Checking to see if id exists
+//     const found = notes.some(note => note.id === parseInt(req.params.id));
+
+//     if (found) {
+//         const updateNote = req.body;
+//         notes.forEach(note => {
+//             if (note.id === parseInt(req.params.id)) {
+//                 note.title = updateNote.title ? updateNote.title : note.title;
+//                 note.text = updateNote.text ? updateNote.text : note.text;
+//                 res.json({ mesg: "Note was updated", note })
+//             }
+//         });
+//     } else {
+//         res.status(400).json({ msg: `No note with the id of ${req.params.id} was found.` })
+//     }
+// });
+
+// Delete Note by id
+router.delete("/:id", function (req, res) {
 
     // Checking to see if id exists
     const found = notes.some(note => note.id === parseInt(req.params.id));
 
     if (found) {
-        const updateNote = req.body;
-        notes.forEach(note => {
-            if (note.id === parseInt(req.params.id)) {
-                note.title = updateNote.title ? updateNote.title : note.title;
-                note.text = updateNote.text ? updateNote.text : note.text;
-                res.json({ mesg: "Note was updated", note })
-            }
-        });
+        res.json({ msg: "Note deleted", notes: notes.filter(note => note.id !== parseInt(req.params.id)) });
     } else {
         res.status(400).json({ msg: `No note with the id of ${req.params.id} was found.` })
     }
 });
-
 module.exports = router;
