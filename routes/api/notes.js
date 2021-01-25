@@ -25,8 +25,22 @@ router.get("/:id", function (req, res) {
 router.post("/", function (req, res) {
     // res.send(req.body)
     const newNote = {
-
+        id: uuid.v4(),
+        title: req.body.title,
+        text: req.body.text,
+        status: "active"
     }
+
+    // check to see if title and text are sent when make request
+    if (!newNote.title || !newNote.text) {
+        res.status(400).json({ msg: "Please include a title and text input." });
+
+    } else {
+        // want newNote to be added to array of notes
+        notes.push(newNote);
+        res.json(notes);
+    }
+
 });
 
 module.exports = router;
