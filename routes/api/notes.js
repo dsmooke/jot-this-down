@@ -20,4 +20,12 @@ router.get("/:id", function (req, res) {
     }
 });
 
+// Create Note (POST) - add it to 'db.json' file, return new note to client
+router.post("/", function (req, res) {
+    // res.send(req.body)
+    const newNote = {
+
+    }
+});
+
 module.exports = router;
