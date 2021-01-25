@@ -30,7 +30,15 @@ app.get("/api/notes", function (req, res) {
 
 // Gets Single Note
 app.get("/api/notes/:id", function (req, res) {
-    res.json(notes.filter(note => note.id === parseInt(req.params.id)))
+
+    // Checking to see if id exists
+    const found = notes.some(note => note.id === parseInt(req.params.id));
+
+    if (found) {
+        res.json(notes.filter(note => note.id === parseInt(req.params.id)));
+    } else {
+        res.status(400).json({ msg: `No note with the id of ${req.params.id} was found.` })
+    }
 });
 
 // Starts the server to begin listening
