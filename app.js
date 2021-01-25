@@ -5,8 +5,11 @@ const util = require("util");
 const express = require("express");
 const path = require("path");
 const notes = require("./Notes");
-
+const logger = require("./middleware/logger");
 const app = express();
+
+// Init middleware
+app.use(logger);
 
 // Set 'public' as static folder
 app.use(express.static(path.join(__dirname, "public")));
@@ -14,14 +17,9 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = 3000;
 
 
-// Middleware: logger to return accessed url
-const logger = function (req, res, next) {
-    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
-    next();
-};
 
-// Init middleware
-app.use(logger);
+
+
 
 // API Routes
 
