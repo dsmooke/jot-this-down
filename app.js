@@ -1,4 +1,3 @@
-// const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
@@ -11,20 +10,17 @@ const app = express();
 // Init middleware
 // app.use(logger);
 
+// Body Parser Middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
+
 // Set 'public' as static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-// API Routes
+// Notes API Routes
 app.use("/api/notes", require("./routes/api/notes"));
 
 const PORT = 3000;
-
-
-
-
-
-
-// API Routes
 
 // Gets All Created Notes, returns as JSON. (Rest API)
 app.get("/api/notes", function (req, res) {
