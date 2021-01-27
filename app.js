@@ -25,11 +25,12 @@ app.use("/api/notes", require("./routes/api/notes"));
 
 // HTML Route???? to see html page w/ visuals and corresponding js
 app.get("/", function (req, res) {
-    res.sendFile(path.join(_dirname, "index.html"));
+    res.sendFile(path.join(_dirname, "./public/index.html"));
+    //public/index.html or index.html path
 });
 
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(_dirname, "notes.html"));
+    res.sendFile(path.join(_dirname, "./public/notes.html"));
 });
 
 const PORT = 3000;
