@@ -86,9 +86,10 @@ router.delete("/:id", function (req, res) {
     if (found) {
 
         res.json({ msg: "Note deleted", notes: notes.filter(note => note.id !== (req.params.id)) });
-        notes.splice(found, req.params.id.length);
+        let newNotes = notes.splice(notes, found.length);
 
-        fs.writeFile("/db/db.json", JSON.stringify(req.params.id.length), (err) => {
+
+        fs.writeFile("./db/db.json", JSON.stringify(newNotes), (err) => {
             if (err) throw err
             console.log("The file cannot be deleted.")
         });
