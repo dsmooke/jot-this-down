@@ -21,6 +21,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // Notes API Routes
 app.use("/api/notes", require("./routes/api/notes"));
 
+// HTML Route???? to see html page w/ visuals and corresponding js
+http request
+const { request } = require("http");
+
 const PORT = 3000;
 
 // Gets All Created Notes, returns as JSON. (Rest API)
