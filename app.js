@@ -3,7 +3,8 @@ const util = require("util");
 
 const express = require("express");
 const path = require("path");
-// const notes = require("./Notes");
+
+const notes = require("./db/db.json");
 const logger = require("./middleware/logger");
 const app = express();
 

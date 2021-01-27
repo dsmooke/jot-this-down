@@ -1,7 +1,7 @@
 const express = require("express");
 const uuid = require("uuid"); // random id generator
 const router = express.Router();
-const notes = require("../../Notes");
+const notes = require("../../db/db.json");
 
 // Gets All Created Notes, returns as JSON. (Rest API)
 router.get("/", function (req, res) {
@@ -22,14 +22,20 @@ router.get("/:id", function (req, res) {
 });
 
 // Create Note (POST) - add it to 'db.json' file, return new note to client
+
+
 router.post("/", function (req, res) {
     // res.send(req.body)
+    console.log(notes);
+    console.log(req.body);
+
     const newNote = {
         id: uuid.v4(),
         title: req.body.title,
         text: req.body.text,
         status: "active"
     }
+
 
     // check to see if title and text are sent when make request
     if (!newNote.title || !newNote.text) {
