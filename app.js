@@ -24,8 +24,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/notes", require("./routes/api/notes"));
 
 // HTML Route???? to see html page w/ visuals and corresponding js
-// http request
-// const { request } = require("http");
+app.get("/", function (req, res) {
+    res.sendFile(path.join(_dirname, "index.html"));
+});
+
+app.get("/notes", function (req, res) {
+    res.sendFile(path.join(_dirname, "notes.html"));
+});
 
 const PORT = 3000;
 
@@ -88,12 +93,8 @@ app.get("/api/notes/:id", function (req, res) {
     }
 });
 
-// Starts the server to begin listening
-app.listen(PORT, function () {
+// // Starts the server to begin listening
+server.listen(PORT, function () {
     console.log(`App listening on PORT ${PORT}`);
 });
 
-// Starts our server.
-server.listen(PORT, function () {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
