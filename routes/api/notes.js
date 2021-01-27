@@ -3,6 +3,8 @@ const uuid = require("uuid"); // random id generator
 const router = express.Router();
 const notes = require("../../db/db.json");
 
+const fs = require("fs");
+
 // Gets All Created Notes, returns as JSON. (Rest API)
 router.get("/", function (req, res) {
     return res.json(notes);
@@ -45,6 +47,11 @@ router.post("/", function (req, res) {
         // want newNote to be added to array of notes
         notes.push(newNote);
         res.json(notes);
+        // fs.writeFile("/db/db.json", notes, function (err, data) {
+        //     if (err) throw err
+        //     console.log("The file cannot be deleted.")
+        // });
+        //pass some data to the file, 
     }
 
 });
@@ -73,12 +80,24 @@ router.put("/:id", function (req, res) {
 router.delete("/:id", function (req, res) {
 
     // Checking to see if id exists
-    const found = notes.some(note => note.id === parseInt(req.params.id));
+    const found = notes.some(note => note.id === (req.params.id));
+    console.log("Found", found);
 
     if (found) {
-        res.json({ msg: "Note deleted", notes: notes.filter(note => note.id !== parseInt(req.params.id)) });
+
+        res.json({ msg: "Note deleted", notes: notes.filter(note => note.id !== (req.params.id)) });
+        notes.splice(found, req.params.id.length);
+
+        fs.writeFile("/db/db.json", JSON.stringify(req.params.id.length), (err) => {
+            if (err) throw err
+            console.log("The file cannot be deleted.")
+        });
+
     } else {
         res.status(400).json({ msg: `No note with the id of ${req.params.id} was found.` })
     }
+    console.log(notes);
+
+
 });
 module.exports = router;
