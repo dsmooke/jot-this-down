@@ -23,9 +23,6 @@ router.get("/:id", function (req, res) {
     }
 });
 
-// Create Note (POST) - add it to 'db.json' file, return new note to client
-
-
 router.post("/", function (req, res) {
     // res.send(req.body)
     console.log(notes);
@@ -38,7 +35,6 @@ router.post("/", function (req, res) {
         status: "active"
     }
 
-
     // check to see if title and text are sent when make request
     if (!newNote.title || !newNote.text) {
         res.status(400).json({ msg: "Please include a title and text input." });
@@ -47,13 +43,7 @@ router.post("/", function (req, res) {
         // want newNote to be added to array of notes
         notes.push(newNote);
         res.json(notes);
-        // fs.writeFile("/db/db.json", notes, function (err, data) {
-        //     if (err) throw err
-        //     console.log("The file cannot be deleted.")
-        // });
-        //pass some data to the file, 
     }
-
 });
 
 // // Update Notes
@@ -88,18 +78,15 @@ router.delete("/:id", function (req, res) {
         res.json({ msg: "Note deleted", notes: notes.filter(note => note.id !== (req.params.id)) });
         let newNotes = notes.splice(found, 1);
 
-
         fs.writeFile("./db/db.json", JSON.stringify(newNotes), (err) => {
-            if (err) throw err
-            console.log("The file cannot be deleted.")
-            return
+            console.log("File was deleted.");
+            if (err) throw err;
         });
 
     } else {
         res.status(400).json({ msg: `No note with the id of ${req.params.id} was found.` })
     }
     console.log(notes);
-
-
 });
+
 module.exports = router;
