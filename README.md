@@ -1,7 +1,13 @@
 # Jot This Down
 
 ## Description
-This is the eleventh assignment for the UConn Coding Boot Camp.
+This is the eleventh assignment for the UConn Coding Boot Camp. We have covered the following topics thus far: Git, Terminal, GitHub, GitHub Pages, Web Accessibility, HTML, CSS, JavaScript, jQuery, Bootstrap, DOM Traversal, Web APIs, Third-Party APIs, Server-Side APIs, Node.js, and Inquirer.js.
+
+This assignment utilizes Node.js and Express.js
+
+View the application [here](https://jot-this-down.herokuapp.com/).
+
+View the repository on [GitHub](https://github.com/dsmooke/jot-this-down)
 
 ## Overview
 
@@ -63,6 +69,11 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
 
+Postman was used to check the `GET`, `POST`, and `DELETE` requests.
+
+![Note Taker Main](./imgs/noteTaker-main-demo.png)
+![Note Taker New Note Page](./imgs/noteTaker-demo.png)
+
 ## Acceptance Criteria
 ```
 Application should allow users to create and save notes.
@@ -72,20 +83,21 @@ Application should allow users to view previously saved notes.
 Application should allow users to delete previously saved notes.
 ```
 
-## Deploying the App
+## Bugs
 
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Important/HerokuGuide.md) for getting your app deployed on Heroku.
+I tried to deploy the application to Heroku, but the URL is not loading and returns: "Application error." With the hope that I must have skipped a step when setting up the app, I deleted the application and started over. I again created a new app and followed the following [directions](https://www.freecodecamp.org/news/how-to-deploy-a-nodejs-app-to-heroku-from-github-without-installing-heroku-on-your-machine-433bec770efe/). Even after taking these steps to deploy, the application URL still did not load. 
+
+## Credits
+
+[Express JS Crash Course](https://www.youtube.com/watch?v=L72fhGm1tfE)
+[Heroku Deploy App Instructions](https://www.freecodecamp.org/news/how-to-deploy-a-nodejs-app-to-heroku-from-github-without-installing-heroku-on-your-machine-433bec770efe/)
+
+
 
 - - -
 
 
-## Submission on BCS
 
-You are required to submit the following:
-
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
-
-* The URL of the GitHub repository
 
 - - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
