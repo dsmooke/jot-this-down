@@ -30,7 +30,7 @@ app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // // Starts the server to begin listening
 app.listen(PORT, function () {
