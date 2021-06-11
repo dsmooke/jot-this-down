@@ -1,9 +1,14 @@
 # Jot This Down
 
-## Description
-This is the eleventh assignment for the UConn Coding Boot Camp. We have covered the following topics thus far: Git, Terminal, GitHub, GitHub Pages, Web Accessibility, HTML, CSS, JavaScript, jQuery, Bootstrap, DOM Traversal, Web APIs, Third-Party APIs, Server-Side APIs, Node.js, and Inquirer.js.
+<span align="left">
 
-This assignment utilizes Node.js and Express.js
+<a href="https://img.shields.io/badge/License-MIT-brightgreen?style=plastic"><img alt="M.I.T. License use" src="https://img.shields.io/badge/License-MIT-brightgreen?style=plastic"/></a>
+
+ </span>
+ 
+## Description
+
+A simple note-taking application that utilizes Node.js and Express.js
 
 View the application [here](https://jot-this-down.herokuapp.com/).
 
@@ -92,16 +97,15 @@ I tried to deploy the application to Heroku, but the URL is not loading and retu
 [Express JS Crash Course](https://www.youtube.com/watch?v=L72fhGm1tfE)
 [Heroku Deploy App Instructions](https://www.freecodecamp.org/news/how-to-deploy-a-nodejs-app-to-heroku-from-github-without-installing-heroku-on-your-machine-433bec770efe/)
 
+## Contact
 
+[Dana Smooke]("https://github.com/dsmooke")
 
-- - -
+## License
 
+[MIT]("https://opensource.org/licenses/MIT")
 
-
-
-- - -
+---
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
-
-
 
 
